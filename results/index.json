@@ -1,8 +1,8 @@
 {
-  "updated_at_utc": "2026-10-02T08:41:04.600997+00:00",
-  "haiku_completed": 5,
-  "mp3_files": 1800,
-  "total_mp3_bytes": 55607352,
+  "updated_at_utc": "2026-10-02T08:51:04.707838+00:00",
+  "haiku_completed": 6,
+  "mp3_files": 2160,
+  "total_mp3_bytes": 66863208,
   "haiku": [
     {
       "slug": "basho-furuike",
@@ -58,6 +58,17 @@
       "elapsed_seconds": 636.38,
       "total_mp3_bytes": 11239368,
       "manifest": "buson-harunoumi/manifest.json"
+    },
+    {
+      "slug": "buson-nanohana",
+      "author": "与謝蕪村",
+      "text": "菜の花や月は東に日は西に",
+      "reading": "なのはなや、つきはひがしに、ひはにしに",
+      "success": 360,
+      "failure": 0,
+      "elapsed_seconds": 597.456,
+      "total_mp3_bytes": 11255856,
+      "manifest": "buson-nanohana/manifest.json"
     }
   ]
 }
