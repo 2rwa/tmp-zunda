@@ -1,0 +1,19 @@
+{
+  "updated_at_utc": "2026-10-02T08:00:14.905096+00:00",
+  "haiku_completed": 1,
+  "mp3_files": 360,
+  "total_mp3_bytes": 10655448,
+  "haiku": [
+    {
+      "slug": "basho-furuike",
+      "author": "松尾芭蕉",
+      "text": "古池や蛙飛びこむ水の音",
+      "reading": "ふるいけや、かわずとびこむ、みずのおと",
+      "success": 360,
+      "failure": 0,
+      "elapsed_seconds": 595.643,
+      "total_mp3_bytes": 10655448,
+      "manifest": "basho-furuike/manifest.json"
+    }
+  ]
+}
