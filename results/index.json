@@ -1,8 +1,8 @@
 {
-  "updated_at_utc": "2026-10-02T08:10:08.277388+00:00",
-  "haiku_completed": 2,
-  "mp3_files": 720,
-  "total_mp3_bytes": 21601272,
+  "updated_at_utc": "2026-10-02T08:20:04.476481+00:00",
+  "haiku_completed": 3,
+  "mp3_files": 1080,
+  "total_mp3_bytes": 32948520,
   "haiku": [
     {
       "slug": "basho-furuike",
@@ -14,6 +14,17 @@
       "elapsed_seconds": 595.643,
       "total_mp3_bytes": 10655448,
       "manifest": "basho-furuike/manifest.json"
+    },
+    {
+      "slug": "basho-samidare",
+      "author": "松尾芭蕉",
+      "text": "五月雨をあつめて早し最上川",
+      "reading": "さみだれを、あつめてはやし、もがみがわ",
+      "success": 360,
+      "failure": 0,
+      "elapsed_seconds": 593.544,
+      "total_mp3_bytes": 11347248,
+      "manifest": "basho-samidare/manifest.json"
     },
     {
       "slug": "basho-shizukesa",
