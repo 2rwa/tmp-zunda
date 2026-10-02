@@ -1,0 +1,140 @@
+name: Zundamon Haiku Scale 120min Sweep
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/haiku-scale-sweep.yml"
+      - "scripts/voicevox_haiku_scale_sweep.py"
+      - "data/haiku.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: zundamon-haiku-scale-sweep
+  cancel-in-progress: false
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 130
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Rebase before generation
+        run: git pull --rebase origin main
+
+      - name: Cheap preflight
+        run: |
+          python3 -m py_compile scripts/voicevox_haiku_scale_sweep.py
+          python3 -m json.tool data/haiku.json >/dev/null
+          if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y ffmpeg
+          fi
+          ffmpeg -version | head -n 1
+
+      - name: Pull VOICEVOX Engine
+        run: docker pull voicevox/voicevox_engine:cpu-latest
+
+      - name: Start VOICEVOX Engine
+        run: |
+          docker run --rm -d \
+            --name voicevox-zunda-haiku \
+            -p 127.0.0.1:50021:50021 \
+            voicevox/voicevox_engine:cpu-latest
+
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:50021/version; then
+              echo
+              exit 0
+            fi
+            sleep 2
+          done
+          docker logs voicevox-zunda-haiku
+          exit 1
+
+      - name: Confirm Zundamon
+        run: |
+          curl -fsS http://127.0.0.1:50021/speakers > /tmp/speakers.json
+          python3 - <<'PY'
+          import json
+          s = json.load(open("/tmp/speakers.json", encoding="utf-8"))
+          z = next(x for x in s if x["name"] == "ずんだもん")
+          print(json.dumps(z, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Generate 8 x 360 variants with checkpoint commits
+        shell: bash
+        run: |
+          set -euo pipefail
+          slugs=(
+            basho-furuike
+            basho-shizukesa
+            basho-samidare
+            basho-natsukusa
+            buson-harunoumi
+            buson-nanohana
+            issa-yasegaeru
+            shiki-kakikueba
+          )
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          started=$(date +%s)
+          for slug in "${slugs[@]}"; do
+            echo "===== START $slug ====="
+            python3 scripts/voicevox_haiku_scale_sweep.py \
+              --haiku-file data/haiku.json \
+              --slug "$slug" \
+              --output-root results
+
+            python3 - <<PY
+          import json
+          from pathlib import Path
+          m = json.loads(Path("results/$slug/manifest.json").read_text(encoding="utf-8"))
+          print(json.dumps(m["summary"], ensure_ascii=False, indent=2))
+          assert m["summary"]["expected"] == 360
+          assert m["summary"]["success"] >= 324, m["summary"]
+          PY
+
+            git add "results/$slug" results/index.json
+            git commit -m "result: $slug 360 scale variants"
+            git push origin HEAD:main
+
+            now=$(date +%s)
+            echo "checkpoint_elapsed_seconds=$((now-started))"
+          done
+
+      - name: Final aggregate validation
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          idx = json.loads(Path("results/index.json").read_text(encoding="utf-8"))
+          print(json.dumps(idx, ensure_ascii=False, indent=2))
+          assert idx["haiku_completed"] == 8, idx
+          assert idx["mp3_files"] >= 2592, idx
+          assert idx["total_mp3_bytes"] > 10_000_000, idx
+          PY
+
+      - name: Commit final index if needed
+        run: |
+          git add results/index.json
+          if git diff --cached --quiet; then
+            echo "No final index changes."
+          else
+            git commit -m "result: finalize haiku scale sweep index"
+            git push origin HEAD:main
+          fi
+
+      - name: Engine log on failure
+        if: failure()
+        run: docker logs voicevox-zunda-haiku || true

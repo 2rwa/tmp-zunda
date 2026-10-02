@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "basho-furuike",
+    "author": "松尾芭蕉",
+    "text": "古池や蛙飛びこむ水の音",
+    "reading": "ふるいけや、かわずとびこむ、みずのおと"
+  },
+  {
+    "slug": "basho-shizukesa",
+    "author": "松尾芭蕉",
+    "text": "閑さや岩にしみ入る蝉の声",
+    "reading": "しずけさや、いわにしみいる、せみのこえ"
+  },
+  {
+    "slug": "basho-samidare",
+    "author": "松尾芭蕉",
+    "text": "五月雨をあつめて早し最上川",
+    "reading": "さみだれを、あつめてはやし、もがみがわ"
+  },
+  {
+    "slug": "basho-natsukusa",
+    "author": "松尾芭蕉",
+    "text": "夏草や兵どもが夢の跡",
+    "reading": "なつくさや、つわものどもが、ゆめのあと"
+  },
+  {
+    "slug": "buson-harunoumi",
+    "author": "与謝蕪村",
+    "text": "春の海ひねもすのたりのたりかな",
+    "reading": "はるのうみ、ひねもすのたり、のたりかな"
+  },
+  {
+    "slug": "buson-nanohana",
+    "author": "与謝蕪村",
+    "text": "菜の花や月は東に日は西に",
+    "reading": "なのはなや、つきはひがしに、ひはにしに"
+  },
+  {
+    "slug": "issa-yasegaeru",
+    "author": "小林一茶",
+    "text": "やせ蛙まけるな一茶これにあり",
+    "reading": "やせがえる、まけるないっさ、これにあり"
+  },
+  {
+    "slug": "shiki-kakikueba",
+    "author": "正岡子規",
+    "text": "柿くへば鐘が鳴るなり法隆寺",
+    "reading": "かきくえば、かねがなるなり、ほうりゅうじ"
+  }
+]

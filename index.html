@@ -1,0 +1,40 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>tmp-zunda haiku scale sweep</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:1000px;margin:2rem auto;padding:0 1rem;line-height:1.5}
+.card{border:1px solid #aaa8;border-radius:12px;padding:1rem;margin:1rem 0}
+select,audio{width:100%;margin:.35rem 0;padding:.35rem} .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem}
+small{opacity:.7}
+</style>
+<h1>ずんだもん × 俳句 × ドレミファソラシド</h1>
+<div id="app">results/index.json を読み込み中…</div>
+<small>VOICEVOX:ずんだもん</small>
+<script>
+(async()=>{
+ const idx=await fetch("./results/index.json").then(r=>r.json());
+ const app=document.getElementById("app"); app.textContent="";
+ for(const h of idx.haiku){
+  const m=await fetch("./results/"+h.manifest).then(r=>r.json());
+  const d=document.createElement("div"); d.className="card";
+  d.innerHTML="<h2>"+m.text+"</h2><p>"+m.author+" / "+m.reading+"</p><div class=row></div><audio controls></audio><div class=now></div>";
+  const row=d.querySelector(".row"), audio=d.querySelector("audio"), now=d.querySelector(".now");
+  const keys=[["bpm","BPM"],["grid","Grid"],["swing","Swing"],["melody","Melody"]];
+  const selects={};
+  for(const [k,label] of keys){
+    const wrap=document.createElement("label"), s=document.createElement("select"); selects[k]=s;
+    wrap.append(label,s); row.appendChild(wrap);
+    [...new Set(m.variants.map(v=>String(v[k])))].forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;s.appendChild(o)});
+    s.onchange=choose;
+  }
+  function choose(){
+    const v=m.variants.find(v=>keys.every(([k])=>String(v[k])===selects[k].value));
+    if(!v)return;
+    audio.src="./results/"+m.slug+"/"+v.file;
+    now.textContent=v.id+" / "+v.duration_seconds+" sec / "+Math.round(v.size_bytes/1024)+" KiB";
+  }
+  choose(); app.appendChild(d);
+ }
+})().catch(e=>document.getElementById("app").textContent="未生成または読み込み失敗: "+e);
+</script>
