@@ -1,8 +1,8 @@
 {
-  "updated_at_utc": "2026-10-02T08:30:25.606515+00:00",
-  "haiku_completed": 4,
-  "mp3_files": 1440,
-  "total_mp3_bytes": 44367984,
+  "updated_at_utc": "2026-10-02T08:41:04.600997+00:00",
+  "haiku_completed": 5,
+  "mp3_files": 1800,
+  "total_mp3_bytes": 55607352,
   "haiku": [
     {
       "slug": "basho-furuike",
@@ -47,6 +47,17 @@
       "elapsed_seconds": 590.728,
       "total_mp3_bytes": 10945824,
       "manifest": "basho-shizukesa/manifest.json"
+    },
+    {
+      "slug": "buson-harunoumi",
+      "author": "与謝蕪村",
+      "text": "春の海ひねもすのたりのたりかな",
+      "reading": "はるのうみ、ひねもすのたり、のたりかな",
+      "success": 360,
+      "failure": 0,
+      "elapsed_seconds": 636.38,
+      "total_mp3_bytes": 11239368,
+      "manifest": "buson-harunoumi/manifest.json"
     }
   ]
 }
