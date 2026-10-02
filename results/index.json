@@ -1,8 +1,8 @@
 {
-  "updated_at_utc": "2026-10-02T08:20:04.476481+00:00",
-  "haiku_completed": 3,
-  "mp3_files": 1080,
-  "total_mp3_bytes": 32948520,
+  "updated_at_utc": "2026-10-02T08:30:25.606515+00:00",
+  "haiku_completed": 4,
+  "mp3_files": 1440,
+  "total_mp3_bytes": 44367984,
   "haiku": [
     {
       "slug": "basho-furuike",
@@ -14,6 +14,17 @@
       "elapsed_seconds": 595.643,
       "total_mp3_bytes": 10655448,
       "manifest": "basho-furuike/manifest.json"
+    },
+    {
+      "slug": "basho-natsukusa",
+      "author": "松尾芭蕉",
+      "text": "夏草や兵どもが夢の跡",
+      "reading": "なつくさや、つわものどもが、ゆめのあと",
+      "success": 360,
+      "failure": 0,
+      "elapsed_seconds": 618.395,
+      "total_mp3_bytes": 11419464,
+      "manifest": "basho-natsukusa/manifest.json"
     },
     {
       "slug": "basho-samidare",
