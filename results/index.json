@@ -1,8 +1,8 @@
 {
-  "updated_at_utc": "2026-10-02T09:01:17.698103+00:00",
-  "haiku_completed": 7,
-  "mp3_files": 2520,
-  "total_mp3_bytes": 77883888,
+  "updated_at_utc": "2026-10-02T09:11:45.064989+00:00",
+  "haiku_completed": 8,
+  "mp3_files": 2880,
+  "total_mp3_bytes": 88996848,
   "haiku": [
     {
       "slug": "basho-furuike",
@@ -80,6 +80,17 @@
       "elapsed_seconds": 610.346,
       "total_mp3_bytes": 11020680,
       "manifest": "issa-yasegaeru/manifest.json"
+    },
+    {
+      "slug": "shiki-kakikueba",
+      "author": "正岡子規",
+      "text": "柿くへば鐘が鳴るなり法隆寺",
+      "reading": "かきくえば、かねがなるなり、ほうりゅうじ",
+      "success": 360,
+      "failure": 0,
+      "elapsed_seconds": 624.578,
+      "total_mp3_bytes": 11112960,
+      "manifest": "shiki-kakikueba/manifest.json"
     }
   ]
 }
