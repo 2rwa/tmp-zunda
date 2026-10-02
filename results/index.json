@@ -1,8 +1,8 @@
 {
-  "updated_at_utc": "2026-10-02T08:00:14.905096+00:00",
-  "haiku_completed": 1,
-  "mp3_files": 360,
-  "total_mp3_bytes": 10655448,
+  "updated_at_utc": "2026-10-02T08:10:08.277388+00:00",
+  "haiku_completed": 2,
+  "mp3_files": 720,
+  "total_mp3_bytes": 21601272,
   "haiku": [
     {
       "slug": "basho-furuike",
@@ -14,6 +14,17 @@
       "elapsed_seconds": 595.643,
       "total_mp3_bytes": 10655448,
       "manifest": "basho-furuike/manifest.json"
+    },
+    {
+      "slug": "basho-shizukesa",
+      "author": "松尾芭蕉",
+      "text": "閑さや岩にしみ入る蝉の声",
+      "reading": "しずけさや、いわにしみいる、せみのこえ",
+      "success": 360,
+      "failure": 0,
+      "elapsed_seconds": 590.728,
+      "total_mp3_bytes": 10945824,
+      "manifest": "basho-shizukesa/manifest.json"
     }
   ]
 }
